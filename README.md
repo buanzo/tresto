@@ -56,7 +56,7 @@ class TestHelloWorld(TrestoTestCase):
 ```
 
 
-Wait - Feling adventurous you say? Try this:
+Wait - Feeling adventurous you say? Try this:
 
 ```python
 from tresto import TrestoTestCase
