@@ -1,3 +1,5 @@
+import os
+import unittest
 from tresto import TrestoTestCase
 
 def hello_world():
@@ -10,3 +12,6 @@ class TestHelloWorld(TrestoTestCase):
     def test_hello_world(self):
         result = hello_world()
         self.assertEqual(result, "Hello World")
+
+if __name__ == '__main__':
+    unittest.main()
