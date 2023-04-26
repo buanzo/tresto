@@ -1,6 +1,5 @@
 import os
 import unittest
-from trello import TrelloClient
 from tresto import TrestoTestCase
 
 class TestTresto(TrestoTestCase):
