@@ -68,3 +68,22 @@ class TrestoTestCase(unittest.TestCase):
     @classmethod
     def move_card(cls, card, lst):
         card.change_list(lst.id)
+
+        class TrestoTestCase(unittest.TestCase):
+
+
+    def assertEqual(self, a, b, msg=None):
+        # Call original assertEqual first
+        super().assertEqual(a, b, msg)
+        # If no exception is raised by assertEqual, the test has passed
+        # add card to passed_list
+        card_name = f'Test {self._testMethodName} Passed'
+        self.add_card(self.passed_list, card_name)
+        
+    def _handleFailure(self, test, err):
+        # Override the default _handleFailure method to add card to failed_list
+        # when a test fails
+        card_name = f'Test {test} Failed'
+        self.add_card(self.failed_list, card_name)
+        # Call original _handleFailure
+        super()._handleFailure(test, err)
