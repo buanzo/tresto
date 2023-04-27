@@ -61,7 +61,6 @@ import unittest
 from tresto import TrestoTestCase
 from trello.exceptions import ResourceUnavailable
 
-
 class TestTresto(TrestoTestCase):
 
     def setUp(self):
@@ -82,7 +81,7 @@ class TestTresto(TrestoTestCase):
         # Test add_card and delete_card for FAILED List
         card_name_failed = "Test Card for FAILED List"
         self.card_failed = self.add_card(self.failed_list, card_name_failed)
-        self.assertEqual(self.card_failed.name, card_name_failed)
+        self.assertEqual(self.card_failed.name, card_name_failed, self.failed_list)
         self.card_failed.delete()
         try:
             deleted_card_failed = self.board.get_card(self.card_failed.id)
@@ -93,7 +92,7 @@ class TestTresto(TrestoTestCase):
         # Test add_card and delete_card for PASSED List
         card_name_passed = "Test Card for PASSED List"
         self.card_passed = self.add_card(self.passed_list, card_name_passed)
-        self.assertEqual(self.card_passed.name, card_name_passed)
+        self.assertEqual(self.card_passed.name, card_name_passed, self.passed_list)
         self.card_passed.delete()
         try:
             deleted_card_passed = self.board.get_card(self.card_passed.id)
@@ -109,7 +108,7 @@ class TestTresto(TrestoTestCase):
         # Refresh card data
         card.fetch()
 
-        self.assertEqual(card.list_id, self.failed_list.id)
+        self.assertEqual(card.list_id, self.failed_list.id, self.failed_list)
         card.delete()
 
 if __name__ == '__main__':
