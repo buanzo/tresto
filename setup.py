@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="tresto",
-    version="0.1.0",
+    version="0.1.1",
     author="Arturo 'Buanzo' Busleiman",
     author_email="buanzo@buanzo.com.ar",
     description="Python unit testing integrated with Trello, providing visualization of project status, ideal for test-driven development",
@@ -20,6 +20,6 @@ setup(
     ],
     python_requires='>=3.6',
     install_requires=[
-        'py-trello>=1.10.0'
+        'py-trello'
     ]
 )
