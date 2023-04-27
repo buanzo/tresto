@@ -22,26 +22,37 @@ as you normally would.  However, you will need to set up your Trello API key
 and token as environment variables TRELLO_API_KEY and TRELLO_API_TOKEN.
 
 ```python
+import unittest
 from tresto import TrestoTestCase
+# FIX: arithmetic.py is in examples/ folder
+from arithmetic import add, subtract, multiply, divide
 
-def test_hello_world():
-    assert hello_world() == "Hello World"
-
-class TestHelloWorld(TrestoTestCase):
+class TestArithmetic(TrestoTestCase):
     auto_create_board = True
     auto_create_lists = True
 
-    def test_hello_world(self):
-        self.add_card(self.passed_list, 'Hello World Test Passed')
+    def test_add(self):
+        self.assertEqual(add(1, 2), 3)
 
-        result = hello_world()
-        self.assertEqual(result, "Hello World")
+    def test_subtract(self):
+        self.assertEqual(subtract(5, 3), 2)
 
-        self.move_card(self.failed_list, self.passed_list)
+    def test_multiply(self):
+        self.assertEqual(multiply(2, 3), 6)
+
+    def test_divide(self):
+        self.assertEqual(divide(6, 3), 2)
+
+    def test_divide_by_zero(self):
+        with self.assertRaises(ValueError):
+            divide(1, 0)
+
+if __name__ == '__main__':
+    unittest.main()
 ```
 
 You can then run your tests using the standard Python unittest framework.
-See the tests/ subdirectory for test_hello_world.py and test_tresto.py -
+See the tests/ subdirectory for test_hello_world.py, test_arithmetic.py and test_tresto.py -
 Yes, that's Tresto testing itself:
 
 ```python
